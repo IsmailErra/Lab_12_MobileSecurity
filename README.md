@@ -10,10 +10,10 @@ Démontrer la vulnérabilité des mécanismes de détection de root côté clien
 Afin d'interagir avec l'application cible, l'environnement de test (Frida et ADB) doit être opérationnel sur la machine hôte et sur l'émulateur.
 
 **Action :** Vérification des installations locales et de la communication avec l'appareil.
-![Preuve d'installation](screenshots/preuve_installation.png)
+![Preuve d'installation](screenshots/01_preuve_installation.png)
 
 **Action :** Lancement de `frida-server` sur l'appareil avec privilèges root et listage des processus pour validation.
-![Déploiement Frida](screenshots/deploiement_frida.png)
+![Déploiement Frida](screenshots/02_deploiement_frida.png)
 
 ---
 
@@ -22,7 +22,7 @@ Afin d'interagir avec l'application cible, l'environnement de test (Frida et ADB
 L'outil Medusa permet d'automatiser l'injection de scripts de contournement sans nécessiter le développement manuel de hooks.
 
 **Action :** Lancement de Medusa, sélection du module `universal_root_detection_bypass` et injection au démarrage (spawn) de l'application Diva.
-![Console Medusa Bypass](screenshots/medusa_console.png)
+![Console Medusa Bypass](screenshots/03_medusa_console.png)
 
 ---
 
@@ -31,7 +31,7 @@ L'outil Medusa permet d'automatiser l'injection de scripts de contournement sans
 En cas de défaillance du module automatisé, un script JavaScript spécifique a été injecté pour intercepter manuellement les API Java (ex: `Build.TAGS`, `File.exists()`).
 
 **Action :** Injection du script `bypass_root.js` directement dans le processus actif via la commande `frida -U "Diva" -l bypass_root.js`.
-![Console Frida Custom](screenshots/frida_console.png)
+![Console Frida Custom](screenshots/04_frida_console.png)
 
 ---
 
@@ -40,7 +40,7 @@ En cas de défaillance du module automatisé, un script JavaScript spécifique a
 Une fois les hooks appliqués (via Medusa ou le script manuel), l'application cible est incapable d'identifier l'état compromis de l'appareil.
 
 **Action :** Exécution de la vérification de root dans l'application Diva.
-![Résultat Bypass](screenshots/app_bypassed.png)
+![Résultat Bypass](screenshots/05_app_bypassed.png)
 
 ---
 
